@@ -239,7 +239,7 @@ class _ChargeBalanceState extends State<ChargeBalance> {
                             setState(() {
                               if (formKey.currentState!.validate()) {
                                 toNext();
-                                showFeedback(
+                                showSuccessDialog(
                                     context, 'balance successefully added');
                                 Navigator.of(context).pushNamedAndRemoveUntil(
                                     bottomRoute, (route) => false);

@@ -41,6 +41,7 @@ dependencies:
   firebase_analytics: ^10.4.3
   intl: ^0.18.1
   dropdown_search: ^3.0.1
+  quickalert: #new line(quickalert)
   
 
 dev_dependencies:

@@ -421,12 +421,12 @@ class _RoundTripDetailsState extends State<RoundTripDetails> {
 
                             if (result == true) {
                               setState(() {
-                                showFeedback(
+                                showSuccessDialog(
                                     context, 'Booking successfully upgraded.');
                                 bookingType = 'Business';
                               });
                             } else {
-                              showFeedback(
+                              showErrorDialog(
                                   context, 'Failed to upgrade booking.');
                             }
                           } else {
@@ -472,7 +472,8 @@ class _RoundTripDetailsState extends State<RoundTripDetails> {
                         c.retrievePreviousBalance(
                             FirebaseAuthProvider.authService().currentUser!.id,
                             canceledBookingPrice);
-                        showFeedback(context, 'Booking successfully deleted.');
+                        showSuccessDialog(
+                            context, 'Booking successfully deleted.');
                         Navigator.pop(context);
                       } else {
                         showErrorDialog(context,

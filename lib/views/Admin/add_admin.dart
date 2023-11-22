@@ -26,40 +26,95 @@ class _AddAdminState extends State<AddAdmin> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: const Color.fromARGB(255, 13, 213, 130),
         title: const Text('Add Admin'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            TextField(
-              controller: _email,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(
-                labelText: 'Email',
+            Container(
+              //new line (container and all of it is inside)
+              width: double.infinity,
+              margin: const EdgeInsets.only(left: 8, right: 8), //0
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color.fromARGB(255, 13, 213,
+                        130), //new line(border) and(color) Green color
+                  ),
+                  boxShadow: const [
+                    BoxShadow(blurRadius: 2, offset: Offset(0, 0))
+                  ],
+                  borderRadius: BorderRadius.circular(13),
+                  color: Colors.white),
+              child: TextField(
+                controller: _email,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.mail), //new line(prefixIcon)
+                  border: InputBorder.none,
+                  labelText: 'Email',
+                ),
               ),
             ),
             const SizedBox(height: 16.0),
-            TextField(
-              controller: _phoneNum,
-              keyboardType: TextInputType.phone,
-              decoration: const InputDecoration(
-                labelText: 'Phone Number',
+            Container(
+              //new line (container and all of it is inside)
+              width: double.infinity,
+              margin: const EdgeInsets.only(left: 8, right: 8), //0
+              padding: const EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color.fromARGB(255, 13, 213,
+                        130), //new line(border) and(color) Green color
+                  ),
+                  boxShadow: const [
+                    BoxShadow(blurRadius: 2, offset: Offset(0, 0))
+                  ],
+                  borderRadius: BorderRadius.circular(13),
+                  color: Colors.white),
+              child: TextField(
+                controller: _phoneNum,
+                keyboardType: TextInputType.phone,
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.phone), //new line(prefixIcon)
+                  border: InputBorder.none,
+                  labelText: 'Phone Number',
+                ),
               ),
             ),
             const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () async {
+            GestureDetector(
+              onTap: () async {
                 final converted = await c.convertUserToAdmin(
                     email: _email.text, phoneNum: _phoneNum.text);
                 if (converted) {
-                  await showFeedback(context, 'Admin Added');
+                  await showSuccessDialog(context, 'Admin Added');
+                  //change from showFeedback to showSuccessDialog
                 } else {
                   await showErrorDialog(context, 'User Not Found');
                 }
               },
-              child: const Text('Add Admin'),
-            ),
+              child: Container(
+                margin: const EdgeInsets.only(left: 8, right: 8),
+                padding: const EdgeInsets.all(15),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                          blurRadius: 1,
+                          offset: Offset(0, 0)) //change blurRadius
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color.fromARGB(255, 13, 213, 130)),
+                child: const Center(
+                    child: Text(
+                  'Add Admin',
+                  style: TextStyle(fontSize: 16, color: Colors.white),
+                )),
+              ),
+            )
           ],
         ),
       ),

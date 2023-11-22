@@ -56,7 +56,7 @@ class _LoginForDeleteState extends State<LoginForDelete> {
                     final userId =
                         FirebaseAuthProvider.authService().currentUser!.id;
                     await c.deleteUser(ownerUserId: userId);
-                    await showFeedback(context, 'Account Deleted');
+                    await showSuccessDialog(context, 'Account Deleted');
                     await Navigator.of(context).pushNamedAndRemoveUntil(
                         welcomeRoute, (route) => false);
                   } on UserNotFoundAuthException {

@@ -54,7 +54,7 @@ class _UpdateEmailViewState extends State<UpdateEmailView> {
                           ownerUserId: currentUser,
                           email: newEmail,
                           phoneNum: "0580647715");
-                      await showFeedback(context, 'Information Updated');
+                      await showSuccessDialog(context, 'Information Updated');
                       await FirebaseAuthProvider.authService().logOut();
                       await Navigator.of(context).pushNamed(loginRoute);
                     } on EmailAlreadyInUseAuthException {

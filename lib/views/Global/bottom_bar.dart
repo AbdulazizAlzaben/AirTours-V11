@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 import '../Manage_booking/view_bookings.dart';
 import '../One-Way/one_way.dart';
+import '../Profile/profile_view.dart';
 import '../Round-Trip/round_trip.dart';
-import '../profile/ProfileView.dart';
+//import '../profile/ProfileView.dart';
 import 'display_history.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 

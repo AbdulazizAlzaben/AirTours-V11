@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:AirTours/views/Global/global_var.dart';
 
 import '../../services/cloud/cloud_booking.dart';
+import 'Credit_card.dart';
 
 class Enterinfo extends StatefulWidget {
   final String id1;

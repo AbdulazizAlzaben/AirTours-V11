@@ -135,6 +135,7 @@ class _CreateFlightState extends State<CreateFlight> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 13, 213, 130),
           title: const Text(
             "Admin",
           ),
@@ -153,7 +154,7 @@ class _CreateFlightState extends State<CreateFlight> {
           leading: IconButton(
             icon: const Icon(
               Icons.power_settings_new_rounded,
-              color: Colors.white,
+              color: Colors.red,
             ),
             onPressed: () {
               FirebaseAuthProvider.authService().logOut();
@@ -172,19 +173,20 @@ class _CreateFlightState extends State<CreateFlight> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          Container(
-                            margin: const EdgeInsets.all(5),
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                boxShadow: const [
-                                  BoxShadow(blurRadius: 2, offset: Offset(0, 0))
-                                ],
-                                borderRadius: BorderRadius.circular(15),
-                                color: Colors.white),
-                            child: GestureDetector(
-                              onTap: () {
-                                _navigateToCitySelectionPage(context, 1);
-                              },
+                          GestureDetector(
+                            onTap: () {
+                              _navigateToCitySelectionPage(context, 1);
+                            },
+                            child: Container(
+                              margin: const EdgeInsets.all(5),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  boxShadow: const [
+                                    BoxShadow(
+                                        blurRadius: 2, offset: Offset(0, 0))
+                                  ],
+                                  borderRadius: BorderRadius.circular(15),
+                                  color: Colors.white),
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -217,20 +219,20 @@ class _CreateFlightState extends State<CreateFlight> {
                           const SizedBox(
                             width: 10,
                           ),
-                          Container(
-                              margin: const EdgeInsets.all(5),
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                  boxShadow: const [
-                                    BoxShadow(
-                                        blurRadius: 2, offset: Offset(0, 0))
-                                  ],
-                                  borderRadius: BorderRadius.circular(15),
-                                  color: Colors.white),
-                              child: GestureDetector(
-                                onTap: () {
-                                  _navigateToCitySelectionPage(context, 2);
-                                },
+                          GestureDetector(
+                              onTap: () {
+                                _navigateToCitySelectionPage(context, 2);
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.all(5),
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    boxShadow: const [
+                                      BoxShadow(
+                                          blurRadius: 2, offset: Offset(0, 0))
+                                    ],
+                                    borderRadius: BorderRadius.circular(15),
+                                    color: Colors.white),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
@@ -574,7 +576,7 @@ class _CreateFlightState extends State<CreateFlight> {
                                       keyboardType: TextInputType.number,
                                       textAlign: TextAlign.start,
                                       decoration: const InputDecoration(
-                                        hintText: "Guest Seats",
+                                        hintText: "Economy Seats",
                                         suffixIcon: Icon(Icons.man_4),
                                         border: InputBorder.none,
                                         contentPadding:
@@ -657,7 +659,7 @@ class _CreateFlightState extends State<CreateFlight> {
                                       keyboardType: TextInputType.number,
                                       textAlign: TextAlign.start,
                                       decoration: const InputDecoration(
-                                        hintText: "Guset Price",
+                                        hintText: "Economy Price",
                                         suffixText: "SAR",
                                         border: InputBorder.none,
                                         contentPadding:
@@ -761,7 +763,7 @@ class _CreateFlightState extends State<CreateFlight> {
                                             depTime: dateTimeDep);
 
                                         clearAllFields();
-                                        await showFeedback(
+                                        await showSuccessDialog(
                                             context, 'Flight Added');
                                       } else {
                                         await showErrorDialog(context,
@@ -783,7 +785,8 @@ class _CreateFlightState extends State<CreateFlight> {
                                             blurRadius: 2, offset: Offset(0, 0))
                                       ],
                                       borderRadius: BorderRadius.circular(15),
-                                      color: Colors.green[500]),
+                                      color: const Color.fromARGB(
+                                          255, 13, 213, 130)),
                                   child: const Padding(
                                     padding: EdgeInsets.all(15.0),
                                     child: Text(

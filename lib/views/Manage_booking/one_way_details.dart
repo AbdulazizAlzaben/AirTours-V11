@@ -4,7 +4,7 @@ import 'package:AirTours/services/cloud/cloud_booking.dart';
 import 'package:AirTours/services/cloud/cloud_flight.dart';
 import 'package:AirTours/services_auth/firebase_auth_provider.dart';
 import 'package:AirTours/utilities/show_error.dart';
-import 'package:AirTours/views/Global/paymentPage.dart';
+//import 'package:AirTours/views/Global/paymentPage.dart';
 import 'package:AirTours/views/Manage_booking/tickets_view.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +14,7 @@ import '../../services/cloud/firestore_booking.dart';
 import '../../services/cloud/firestore_flight.dart';
 import '../../utilities/show_feedback.dart';
 import '../Global/global_var.dart';
+import '../Global/payment_page.dart';
 import '../Global/ticket.dart';
 
 class OneWayDetails extends StatefulWidget {
@@ -257,12 +258,12 @@ class _OneWayDetailsState extends State<OneWayDetails> {
 
                             if (result == true) {
                               setState(() {
-                                showFeedback(
+                                showSuccessDialog(
                                     context, 'Booking successfully upgraded.');
                                 bookingType = 'Business';
                               });
                             } else {
-                              showFeedback(
+                              showErrorDialog(
                                   context, 'Failed to upgrade booking.');
                             }
                           } else {
@@ -307,7 +308,8 @@ class _OneWayDetailsState extends State<OneWayDetails> {
                         c.retrievePreviousBalance(
                             FirebaseAuthProvider.authService().currentUser!.id,
                             canceledBookingPrice);
-                        showFeedback(context, 'Booking successfully deleted.');
+                        showSuccessDialog(
+                            context, 'Booking successfully deleted.');
                         Navigator.pop(context);
                       } else {
                         showErrorDialog(context,

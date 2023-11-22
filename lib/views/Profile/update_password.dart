@@ -45,7 +45,7 @@ class _UpdatePasswordViewState extends State<UpdatePasswordView> {
                     try {
                       await FirebaseAuthProvider.authService()
                           .updateUserPassword(password: newPassword);
-                      await showFeedback(context, 'Information Updated');
+                      await showSuccessDialog(context, 'Information Updated');
                       await FirebaseAuthProvider.authService().logOut();
                       await Navigator.of(context).pushNamed(loginRoute);
                     } on WeakPasswordAuthException {
